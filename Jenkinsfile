@@ -5,6 +5,7 @@ node{
     def docker
     def dockerCMD
     def tagName
+    def dockeruser="swatig139627"
     
     stage('prepare enviroment'){
         echo 'initialize all the variables'
@@ -47,8 +48,10 @@ node{
     stage('Pushing it ot the DockerHub'){
         echo 'Pushing the docker image to DockerHub'
        withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
-        sh "${dockerCMD} login -u swatig139627 -p ${dockerHubPassword}"
-        sh "${dockerCMD} push swatig139627/insurance:${tagName}"
+          sh "docker login -u $dockerUser -p $dockerPassword"
+            sh "docker tag $containerName:$tag $dockerUser/$containerName:$tag"
+            sh "docker push $dockerUser/$containerName:$tag"
+            echo "Image push complete"
             
         }
     }
