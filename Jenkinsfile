@@ -5,7 +5,9 @@ node{
     def docker
     def dockerCMD
     def tagName
-    def dockerHubuser="swatig139627"
+    def containerName="insurance"
+def tag="latest"
+def dockerHubUser="swatig139627"
     
     stage('prepare enviroment'){
         echo 'initialize all the variables'
@@ -40,21 +42,20 @@ node{
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Capstone-Project-Live-Demo/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
     }
     
-    stage('Containerize the application'){
-        echo 'Creating Docker image'
-        sh "${dockerCMD} build -t swatig139627/insurance:${tagName} ."
+ stage('Image Build'){
+        sh "docker build -t $containerName:$tag --pull --no-cache ."
+        echo "Image build complete"
     }
-    
-    stage('Pushing it ot the DockerHub'){
-        echo 'Pushing the docker image to DockerHub'
-       withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
-          sh "docker login -u $dockerUser -p $dockerPassword"
-            sh "docker tag $swatig139627/insurance:$tag $dockerUser/$swatig139627/insurance:$tag"
-            sh "docker push $dockerUser/$swatig139627:$tag"
+
+    stage('Push to Docker Registry'){
+        withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
+            sh "docker login -u $dockerUser -p $dockerPassword"
+            sh "docker tag $containerName:$tag $dockerUser/$containerName:$tag"
+            sh "docker push $dockerUser/$containerName:$tag"
             echo "Image push complete"
-            
         }
-    }
+}
+ 
         
     stage('Configure and Deploy to the test-server'){
         ansiblePlaybook become: true, credentialsId: 'ansible-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-playbook.yml'
