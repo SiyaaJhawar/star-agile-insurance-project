@@ -58,7 +58,7 @@ def dockerHubUser="swatig139627"
  
         
     stage('Configure and Deploy to the test-server'){
-         ansiblePlaybook credentialsId: 'ansibleid2', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
+         ansiblePlaybook credentialsId: 'ansibleid2', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
     }
         
         
