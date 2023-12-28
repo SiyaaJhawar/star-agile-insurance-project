@@ -67,6 +67,9 @@ def dockerHubUser="swatig139627"
         
         
     }
+    stage("Kubernetes Deploy"){
+        sh"kubectl get pods -o wide"
+    }
 }
 
 
