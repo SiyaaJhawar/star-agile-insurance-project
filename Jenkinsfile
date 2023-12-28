@@ -1,20 +1,12 @@
 node{
     
-    def mavenHome
-    def mavenCMD
-    def docker
-    def dockerCMD
-    def tagName
+    
     def containerName="insurance"
 def tag="latest"
 def dockerHubUser="swatig139627"
     
     stage('prepare enviroment'){
-        echo 'initialize all the variables'
-        mavenHome = tool name: 'maven' , type: 'maven'
-        mavenCMD = "${mavenHome}/bin/mvn"
-        docker = tool name: 'docker' , type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-        dockerCMD = "${docker}/bin/docker"
+      
         tagName="latest"
     }
     
