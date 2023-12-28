@@ -41,11 +41,16 @@ def dockerHubUser="swatig139627"
     stage('publish test reports'){
         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Insuance_project3/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
     }
+     stage("Image Prune"){
+         sh "docker image prune -f"
+    }
+
     
  stage('Image Build'){
         sh "docker build -t $containerName:$tag --pull --no-cache ."
         echo "Image build complete"
     }
+    
 
     stage('Push to Docker Registry'){
         withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
