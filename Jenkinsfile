@@ -60,7 +60,7 @@ def dockerHubUser="swatig139627"
         
     }
    stage("Kubernetes Deploy") {
-       kubeconfig(credentialsId: 'kubernetesconfig', serverUrl: '') {
+       kubeconfig(credentialsId: 'kubeconfig', serverUrl: '') {
     
 
     
