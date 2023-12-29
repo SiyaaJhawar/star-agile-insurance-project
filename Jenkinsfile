@@ -63,8 +63,9 @@ def dockerHubUser="swatig139627"
        kubeconfig(credentialsId: 'kubernetesconfig', serverUrl: '') {
     
 
-    kubernetesDeploy(configs: [["deployment.yaml", "service.yaml"]])
+    
     sh "kubectl get pods -o wide"
+   kubernetesDeploy(configs: [["deployment.yaml", "service.yaml"]])
 }
 
 }
