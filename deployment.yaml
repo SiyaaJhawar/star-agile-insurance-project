@@ -9,10 +9,12 @@ spec:
   selector:
     matchLabels:
       app: insurance-app
+      tier: web
   template:
     metadata:
       labels:
         app: insurance-app
+        tier: web
     spec:
       containers:
       - name: insurance-app
