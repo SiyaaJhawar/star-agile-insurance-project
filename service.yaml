@@ -4,9 +4,9 @@ metadata:
   name: service #The name of the Kubernetes Service to be created in the Kubernetes cluster
 spec:
   selector:
-    app: springboot-app 
+    app: insurance-app 
   type: LoadBalancer #Type of the Kubernetes Service
   ports:
   - protocol: TCP
-    port: 8081
+    port: 80
     targetPort: 8081
