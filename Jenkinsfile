@@ -55,18 +55,4 @@ def dockerHubUser="swatig139627"
  
         
     
-    
-   stage('Kubernetes Deploy') {
-       sh "kubectl apply -f deployment.yaml"
-    
-
-    
-    sh "kubectl get pods -o wide"
-   }
-
-
-
-
-
-
 }
