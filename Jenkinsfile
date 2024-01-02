@@ -59,8 +59,7 @@ def dockerHubUser="swatig139627"
         
         
     }
-    node('K8smaster')
-    {
+    
    stage("Kubernetes Deploy") {
        sh "kubectl apply -f deployment.yaml"
     
@@ -69,7 +68,7 @@ def dockerHubUser="swatig139627"
     sh "kubectl get pods -o wide"
    }
 
-}
+
 
 
 
