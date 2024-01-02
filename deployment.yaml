@@ -3,22 +3,29 @@ kind: Deployment
 metadata:
   name: deployment
   labels:
-    app: insurance-app
+    app: springboot
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: insurance-app
-      tier: web
+      app: springboot
+      
   template:
     metadata:
       labels:
-        app: insurance-app
-        tier: web
+        app: springboot
+        
     spec:
       containers:
-      - name: insurance-app
+      - name: springboot
         image: swatig139627/insurance:latest
         ports:
         - containerPort: 8081
+         resources:
+          limits:  
+            cpu: 1000m
+            memory: 600Mi             
+          requests: 
+            cpu: 500m
+            memory: 300Mi
 
