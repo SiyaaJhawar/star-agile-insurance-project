@@ -59,14 +59,15 @@ def dockerHubUser="swatig139627"
         
         
     }
+    node('K8smaster')
+    {
    stage("Kubernetes Deploy") {
-       kubeconfig(credentialsId: 'kubeconfig', serverUrl: '') {
+       sh "kubectl apply -f deployment.yaml"
     
 
     
     sh "kubectl get pods -o wide"
-   kubernetesDeploy(configs: [["deployment.yaml", "service.yaml"]])
-}
+   }
 
 }
 
