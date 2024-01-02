@@ -54,11 +54,7 @@ def dockerHubUser="swatig139627"
 }
  
         
-    stage('Configure and Deploy to the test-server'){
-        ansiblePlaybook credentialsId: 'ansibleid2', disableHostKeyChecking: true, installation: 'ansible', inventory: 'host', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
-        
-        
-    }
+    
     
    stage('Kubernetes Deploy') {
        sh "kubectl apply -f deployment.yaml"
