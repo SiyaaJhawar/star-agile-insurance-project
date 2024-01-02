@@ -1,7 +1,7 @@
 node{
     
     
-    def containerName="insurance"
+def containerName="insurance"
 def tag="latest"
 def dockerHubUser="swatig139627"
     
@@ -60,7 +60,7 @@ def dockerHubUser="swatig139627"
         
     }
     
-   stage("Kubernetes Deploy") {
+   stage('Kubernetes Deploy') {
        sh "kubectl apply -f deployment.yaml"
     
 
