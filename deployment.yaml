@@ -27,4 +27,8 @@ spec:
           requests:
             cpu: 500m
             memory: 300Mi
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          effect: NoSchedule
+
      
