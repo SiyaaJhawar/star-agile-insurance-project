@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ais-ifm
-  labels:
-    product: actimize
+  
 spec:
   replicas: 1
   selector:
@@ -23,8 +22,6 @@ spec:
         - containerPort: 8081
         resources:
           limits:
-            cpu: 1000m
-            memory: 600Mi
-          requests:
-            cpu: 500m
-            memory: 300Mi
+            cpu: 400m
+            memory: 200Mi
+          
