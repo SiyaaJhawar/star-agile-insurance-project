@@ -2,28 +2,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployment
+  name: ais-ifm
   labels:
-    app: springboot-app
+    product: actimize
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: springboot-app
+      app: ais
+      tier: web
   template:
     metadata:
       labels:
-        app: springboot-app
+        app: ais
+        tier: web
     spec:
       containers:
-        - name: springboot-app
+        - name: insurance-container
           image: swatig139627/insurance:latest
           ports:
-            - containerPort: 8081
+            - containerPort: 8080
           resources:
             limits:
-              cpu: 400m
-              memory: 200Mi
+              cpu: 1000m
+              memory: 600Mi
 
 
 
