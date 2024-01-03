@@ -1,34 +1,31 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployment
+  name: ais-ifm
   labels:
-    app: ais
+    product: actimize
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: ais
+      tier: web
   template:
     metadata:
       labels:
         app: ais
+        tier: web
     spec:
       containers:
-        - name: bootcamp-container
-          image: swatig139627/insurance:latest
-          ports:
-            - containerPort: 8081
-          resources:
-            limits:
-              cpu: 1
-              memory: 1600Mi
-          requests:
+      - name: insurance-container
+        image: swatig139627/insurance:latest
+        ports:
+        - containerPort: 8081
+        resources:
+          limits:  
+            cpu: 1000m
+            memory: 1600Mi             
+          requests: 
             cpu: 500m
             memory: 300Mi
-      tolerations:
-        - key: node-role.kubernetes.io/control-plane
-          effect: NoSchedule
-
-     
+      
