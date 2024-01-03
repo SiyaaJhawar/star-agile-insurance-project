@@ -16,7 +16,7 @@ spec:
         tier: web
     spec:
       containers:
-      - name: bootcamp-container
+      - name: insurance-container
         image: swatig139627/insurance:latest
         ports:
         - containerPort: 8081
