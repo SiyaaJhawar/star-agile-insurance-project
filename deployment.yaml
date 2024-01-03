@@ -21,7 +21,7 @@ spec:
         - name: insurance-container
           image: swatig139627/insurance:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
           resources:
             limits:
               cpu: 1000m
