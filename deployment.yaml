@@ -16,6 +16,6 @@ spec:
         - name: insurance-app
           image: swatig139627/insurance:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
          
 
