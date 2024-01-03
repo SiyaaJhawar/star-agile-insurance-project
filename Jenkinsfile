@@ -57,6 +57,6 @@ def dockerHubUser="swatig139627"
     {
         sh "kubectl get node -o wide"
         sh "kubectl apply -f deployment.yaml"
-    
+        sh "kubectl apply -f service.yaml"
 }
 }
