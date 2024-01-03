@@ -1,36 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jenkins
+  name: ais-ifm
   labels:
-    app: jenkins-server
+    product: actimize
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: jenkins-server
+      app: ais
+      tier: web
   template:
     metadata:
       labels:
-        app: jenkins-server
+        app: ais
+        tier: web
     spec:
-      securityContext:
-            fsGroup: 1000
-            runAsUser: 1000
-      serviceAccountName: jenkins-admin
       containers:
-        - name: jenkins
-          image: swatig139627/insurance:latest
-          resources:
-            limits:
-              memory: "2Gi"
-              cpu: "1000m"
-            requests:
-              memory: "500Mi"
-              cpu: "500m"
-          ports:
-            - name: httpport
-              containerPort: 8080
+      - name: bootcamp-container
+        image: swatig139627/insurance:latest
+        ports:
+        - containerPort: 8081
+        resources:
+          limits:  
+            cpu: 1000m
+            memory: 600Mi             
+          requests: 
+            cpu: 500m
+            memory: 300Mi
           
           
          
