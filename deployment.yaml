@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -31,6 +30,6 @@ spec:
               memory: 100Mi
           tolerations:
             - key: node.kubernetes.io/unreachable
-              operator: Equal
+              operator: Exists
               effect: NoSchedule
               tolerationSeconds: 300
