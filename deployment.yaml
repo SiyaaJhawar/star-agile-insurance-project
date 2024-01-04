@@ -29,8 +29,8 @@ spec:
             requests:
               cpu: 100m
               memory: 100Mi
-         tolerations:
-         - key: "node.kubernetes.io/unreachable"
-           operator: "Equal"
-           effect: "NoSchedule"
-           tolerationSeconds: 300
+          tolerations:
+            - key: node.kubernetes.io/unreachable
+              operator: Equal
+              effect: NoSchedule
+              tolerationSeconds: 300
