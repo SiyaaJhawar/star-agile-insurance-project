@@ -22,10 +22,10 @@ spec:
           image: swatig139627/insurance:latest
           ports:
             - containerPort: 8081
-            resources:
-          limits:  
+              resources: null
+          limits:
             cpu: 400m
-            memory: 200Mi             
-          requests: 
+            memory: 200Mi
+          requests:
             cpu: 200m
             memory: 100Mi
