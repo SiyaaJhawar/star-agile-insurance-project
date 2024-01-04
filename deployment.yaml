@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,4 +33,3 @@ spec:
             - key: node.kubernetes.io/unreachable
               operator: Exists
               effect: NoSchedule
-              tolerationSeconds: 300
