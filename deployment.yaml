@@ -29,3 +29,7 @@ spec:
       tolerations:
         - key: node-role.kubernetes.io/control-plane
           operator: Exists
+        - key: node.kubernetes.io/disk-pressure
+          operator: Exists
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
