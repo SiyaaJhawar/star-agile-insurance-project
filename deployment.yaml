@@ -29,7 +29,7 @@ spec:
             requests:
               cpu: 100m
               memory: 100Mi
-          tolerations:
-            - key: node.kubernetes.io/unreachable
-              operator: Exists
-              effect: NoSchedule
+      tolerations:
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
+          effect: NoSchedule
