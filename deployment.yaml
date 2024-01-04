@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ais-ifm
+  name: insurance
   labels:
     product: actimize
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ais
+      app: insurance
       tier: web
   template:
     metadata:
       labels:
-        app: ais
+        app: insurance
         tier: web
     spec:
       containers:
