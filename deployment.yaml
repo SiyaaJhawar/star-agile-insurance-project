@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: insurance
   labels:
-    product: actimize
+    product: health
 spec:
   replicas: 1
   selector:
