@@ -10,5 +10,5 @@ spec:
       targetPort: 8081
   type: NodePort
   selector:
-    app: ais
+    app: insurance
     tier: web
